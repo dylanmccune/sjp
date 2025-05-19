@@ -1,0 +1,992 @@
+[
+    {
+        "text": "Your leg hurts really bad.",
+        "choices": [
+            {
+                "text": "Go to the doctor (-$150, +health)",
+                "effect": {
+                    "money": -150,
+                    "health": 10
+                },
+                "message": "You visited the doctor and feel better."
+            },
+            {
+                "text": "Ignore it (-health)",
+                "effect": {
+                    "health": -10
+                },
+                "message": "You soldiered on, but your pain worsened."
+            }
+        ]
+    },
+    {
+        "text": "You find a wallet on the street.",
+        "choices": [
+            {
+                "text": "Return it (+happiness)",
+                "effect": {
+                    "happiness": 5
+                },
+                "message": "The owner thanks you—your heart feels full."
+            },
+            {
+                "text": "Keep the cash (+$50, -happiness)",
+                "effect": {
+                    "money": 50,
+                    "happiness": -5
+                },
+                "message": "Guilt gnaws at you as you spend the money."
+            }
+        ]
+    },
+    {
+        "text": "You get a freelance gig.",
+        "choices": [
+            {
+                "text": "Take the gig (+$150, -happiness)",
+                "effect": {
+                    "money": 150,
+                    "happiness": -5,
+                    "job": 5
+                },
+                "message": "You worked hard and got paid, but you’re burned out."
+            },
+            {
+                "text": "Decline (+happiness)",
+                "effect": {
+                    "happiness": 5
+                },
+                "message": "You enjoyed your free time and feel refreshed."
+            }
+        ]
+    },
+    {
+        "text": "You get sick.",
+        "choices": [
+            {
+                "text": "Rest at home (-job, +health)",
+                "effect": {
+                    "job": -5,
+                    "health": 10
+                },
+                "message": "Rest did you good; you healed up."
+            },
+            {
+                "text": "Work anyway (-health, +job)",
+                "effect": {
+                    "health": -10,
+                    "job": 5
+                },
+                "message": "You powered through but felt awful."
+            }
+        ]
+    },
+    {
+        "text": "You get a parking ticket.",
+        "choices": [
+            {
+                "text": "Pay the ticket (-$75)",
+                "effect": {
+                    "money": -75
+                },
+                "message": "You paid the ticket and moved on."
+            },
+            {
+                "text": "Ignore it (risk a fine)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.5,
+                            "money": -200,
+                            "message": "You got caught and paid a $200 fine!"
+                        },
+                        {
+                            "chance": 0.5,
+                            "money": 0,
+                            "message": "You got lucky and avoided the fine."
+                        }
+                    ]
+                },
+                "message": "You ignored the ticket and hoped for the best."
+            }
+        ]
+    },
+    {
+        "text": "You win a small lottery!",
+        "choices": [
+            {
+                "text": "Save the money (+$100, +happiness)",
+                "effect": {
+                    "money": 100,
+                    "happiness": 10
+                },
+                "message": "You tucked it away—security feels good."
+            },
+            {
+                "text": "Spend it all (+happiness)",
+                "effect": {
+                    "happiness": 15
+                },
+                "message": "You splurged and had a blast!"
+            }
+        ]
+    },
+    {
+        "text": "Your rent increases unexpectedly.",
+        "choices": [
+            {
+                "text": "Pay the increase (-$100)",
+                "effect": {
+                    "money": -100
+                },
+                "message": "You paid the extra and kept your home."
+            },
+            {
+                "text": "Negotiate (50% chance to avoid)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.5,
+                            "money": 0,
+                            "message": "Landlord agreed—rent stays the same."
+                        },
+                        {
+                            "chance": 0.5,
+                            "money": -100,
+                            "message": "Negotiation failed—you paid the increase."
+                        }
+                    ]
+                },
+                "message": "You tried negotiating and waited for a reply."
+            }
+        ]
+    },
+    {
+        "text": "You help a friend move.",
+        "choices": [
+            {
+                "text": "Help for free (+happiness)",
+                "effect": {
+                    "happiness": 5
+                },
+                "message": "Your friend is grateful—you feel good too."
+            },
+            {
+                "text": "Ask for gas money (+$20, -happiness)",
+                "effect": {
+                    "money": 20,
+                    "happiness": -2
+                },
+                "message": "You got paid but felt awkward asking."
+            }
+        ]
+    },
+    {
+        "text": "You lose your wallet.",
+        "choices": [
+            {
+                "text": "Cancel cards (-$20)",
+                "effect": {
+                    "money": -20
+                },
+                "message": "You paid replacement fees and felt safer."
+            },
+            {
+                "text": "Do nothing (risk losing $100)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.5,
+                            "money": -100,
+                            "message": "Someone used your cards—$100 gone."
+                        },
+                        {
+                            "chance": 0.5,
+                            "money": 0,
+                            "message": "It showed up—you dodged a bullet."
+                        }
+                    ]
+                },
+                "message": "You waited, hoping it’d turn up."
+            }
+        ]
+    },
+    {
+        "text": "You get a tax refund.",
+        "choices": [
+            {
+                "text": "Save it (+$200)",
+                "effect": {
+                    "money": 200
+                },
+                "message": "You banked it for a rainy day."
+            },
+            {
+                "text": "Spend it (-$0, +happiness)",
+                "effect": {
+                    "happiness": 5
+                },
+                "message": "You treated yourself—and smiled."
+            }
+        ]
+    },
+    {
+        "text": "You volunteer at a shelter.",
+        "choices": [
+            {
+                "text": "Spend the day helping (+happiness, -job)",
+                "effect": {
+                    "happiness": 10,
+                    "job": -5
+                },
+                "message": "You made a difference—and lost a day’s pay."
+            },
+            {
+                "text": "Skip it (+job)",
+                "effect": {
+                    "job": 5
+                },
+                "message": "You worked instead—income secured."
+            }
+        ]
+    },
+    {
+        "text": "You get a bonus at work!",
+        "choices": [
+            {
+                "text": "Celebrate (-$100, +happiness)",
+                "effect": {
+                    "money": -100,
+                    "happiness": 10
+                },
+                "message": "Party time—you feel awesome."
+            },
+            {
+                "text": "Save it (+$200, +job)",
+                "effect": {
+                    "money": 200,
+                    "job": 10
+                },
+                "message": "You banked it—and impressed your manager."
+            }
+        ]
+    },
+    {
+        "text": "You break your phone.",
+        "choices": [
+            {
+                "text": "Buy a new one (-$300, +happiness)",
+                "effect": {
+                    "money": -300,
+                    "happiness": 5
+                },
+                "message": "You got the latest model—so happy!"
+            },
+            {
+                "text": "Use an old phone (-happiness)",
+                "effect": {
+                    "happiness": -5
+                },
+                "message": "You’re frustrated with the glitchy backup."
+            }
+        ]
+    },
+    {
+        "text": "You get a flat tire.",
+        "choices": [
+            {
+                "text": "Fix it yourself (-$20, +job)",
+                "effect": {
+                    "money": -20,
+                    "job": 2
+                },
+                "message": "You patched it up—skill unlocked!"
+            },
+            {
+                "text": "Take it to a shop (-$50)",
+                "effect": {
+                    "money": -50
+                },
+                "message": "Mechanic fixed it while you waited."
+            }
+        ]
+    },
+    {
+        "text": "You get invited to a party.",
+        "choices": [
+            {
+                "text": "Go (-$30, +happiness)",
+                "effect": {
+                    "money": -30,
+                    "happiness": 10
+                },
+                "message": "You danced all night with friends."
+            },
+            {
+                "text": "Stay home (+job)",
+                "effect": {
+                    "job": 5
+                },
+                "message": "You got extra work done instead."
+            }
+        ]
+    },
+    {
+        "text": "Your morning coffee shop forgot your order.",
+        "choices": [
+            {
+                "text": "Buy it anyway (−$5, +happiness)",
+                "effect": {
+                    "money": -5,
+                    "happiness": 5
+                },
+                "message": "You grabbed a fresh cup—and smiled."
+            },
+            {
+                "text": "Go home (−happiness)",
+                "effect": {
+                    "happiness": -5
+                },
+                "message": "You missed your caffeine fix."
+            }
+        ]
+    },
+    {
+        "text": "Your train is delayed.",
+        "choices": [
+            {
+                "text": "Wait patiently (−happiness)",
+                "effect": {
+                    "happiness": -2
+                },
+                "message": "You sighed as time ticked by."
+            },
+            {
+                "text": "Grab a taxi (−$20, +job)",
+                "effect": {
+                    "money": -20,
+                    "job": 5
+                },
+                "message": "You made it on time thanks to the ride."
+            }
+        ]
+    },
+    {
+        "text": "Your coworker gossips about you.",
+        "choices": [
+            {
+                "text": "Confront them (−happiness)",
+                "effect": {
+                    "happiness": -5
+                },
+                "message": "It was awkward—and left you uneasy."
+            },
+            {
+                "text": "Let it slide (+job)",
+                "effect": {
+                    "job": 3
+                },
+                "message": "You focused on work and stayed productive."
+            }
+        ]
+    },
+    {
+        "text": "Your prescription refill is due.",
+        "choices": [
+            {
+                "text": "Refill it (−$30, +health)",
+                "effect": {
+                    "money": -30,
+                    "health": 5
+                },
+                "message": "You’re back on track with your meds."
+            },
+            {
+                "text": "Skip refill (−health)",
+                "effect": {
+                    "health": -10
+                },
+                "message": "You feel worse without your prescription."
+            }
+        ]
+    },
+    {
+        "text": "You accidentally spill coffee on your shirt.",
+        "choices": [
+            {
+                "text": "Buy a new shirt (−$40)",
+                "effect": {
+                    "money": -40
+                },
+                "message": "You look fresh in a clean new shirt."
+            },
+            {
+                "text": "Stain remover at home (−$5, +job)",
+                "effect": {
+                    "money": -5,
+                    "job": 2
+                },
+                "message": "You fixed it yourself—satisfaction earned."
+            }
+        ]
+    },
+    {
+        "text": "The power goes out in your neighborhood.",
+        "choices": [
+            {
+                "text": "Buy candles (−$10, +happiness)",
+                "effect": {
+                    "money": -10,
+                    "happiness": 5
+                },
+                "message": "Candlelight made the evening cozy."
+            },
+            {
+                "text": "Wait it out (−happiness)",
+                "effect": {
+                    "happiness": -5
+                },
+                "message": "You fumbled in the dark and got frustrated."
+            }
+        ]
+    },
+    {
+        "text": "Your student loan statement arrives.",
+        "choices": [
+            {
+                "text": "Pay minimum (−$200)",
+                "effect": {
+                    "money": -200
+                },
+                "message": "You made the payment—stress relieved slightly."
+            },
+            {
+                "text": "Pay extra (−$300, +job)",
+                "effect": {
+                    "money": -300,
+                    "job": 5
+                },
+                "message": "You chipped away at debt—and felt proud."
+            }
+        ]
+    },
+    {
+        "text": "You lose your house keys.",
+        "choices": [
+            {
+                "text": "Call a locksmith (−$80)",
+                "effect": {
+                    "money": -80
+                },
+                "message": "A locksmith let you back in safely."
+            },
+            {
+                "text": "Break a window (−$150, −happiness)",
+                "effect": {
+                    "money": -150,
+                    "happiness": -10
+                },
+                "message": "It worked, but you feel terrible about the bill."
+            }
+        ]
+    },
+    {
+        "text": "Your bike gets stolen.",
+        "choices": [
+            {
+                "text": "Report to police (+job)",
+                "effect": {
+                    "job": 2
+                },
+                "message": "You filed a report—procedure completed."
+            },
+            {
+                "text": "Buy new bike (−$200)",
+                "effect": {
+                    "money": -200
+                },
+                "message": "You replaced it and can ride again."
+            }
+        ]
+    },
+    {
+        "text": "You receive a marketing email scam.",
+        "choices": [
+            {
+                "text": "Ignore it (+safety)",
+                "effect": {
+                    "happiness": 2
+                },
+                "message": "You dodged the scam—safe and sound."
+            },
+            {
+                "text": "Fall for it (chance lose money)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.3,
+                            "money": -100,
+                            "message": "You lost $100 before realizing it was a scam."
+                        },
+                        {
+                            "chance": 0.7,
+                            "money": 0,
+                            "message": "Luckily, nothing happened."
+                        }
+                    ]
+                },
+                "message": "You clicked—now you wait to see what happens."
+            }
+        ]
+    },
+    {
+        "text": "Friend invites you to their wedding.",
+        "choices": [
+            {
+                "text": "Attend (−$100, +happiness)",
+                "effect": {
+                    "money": -100,
+                    "happiness": 10
+                },
+                "message": "You had a wonderful time celebrating."
+            },
+            {
+                "text": "Send gift only (−$50)",
+                "effect": {
+                    "money": -50,
+                    "happiness": 5
+                },
+                "message": "Your gift was appreciated—you feel good."
+            }
+        ]
+    },
+    {
+        "text": "You get seasonal allergies.",
+        "choices": [
+            {
+                "text": "Buy meds (−$15, +health)",
+                "effect": {
+                    "money": -15,
+                    "health": 5
+                },
+                "message": "Medications cleared up your symptoms."
+            },
+            {
+                "text": "Ignore (−health)",
+                "effect": {
+                    "health": -5
+                },
+                "message": "You sniffled all day—tough luck."
+            }
+        ]
+    },
+    {
+        "text": "Your apartment floods after a pipe bursts.",
+        "choices": [
+            {
+                "text": "Hire plumber (−$250)",
+                "effect": {
+                    "money": -250
+                },
+                "message": "The plumber fixed it—water’s gone."
+            },
+            {
+                "text": "DIY fix (−$50, +job)",
+                "effect": {
+                    "money": -50,
+                    "job": 5
+                },
+                "message": "You patched it yourself—job well done."
+            }
+        ]
+    },
+    {
+        "text": "You accidentally overdraw your bank account.",
+        "choices": [
+            {
+                "text": "Pay overdraft fee (−$35)",
+                "effect": {
+                    "money": -35
+                },
+                "message": "You covered the fee and avoided further charges."
+            },
+            {
+                "text": "Transfer from savings (−$100)",
+                "effect": {
+                    "money": -100
+                },
+                "message": "You moved funds and your balance is back positive."
+            }
+        ]
+    },
+    {
+        "text": "You find a lost dog on your street.",
+        "choices": [
+            {
+                "text": "Return to owner (+happiness)",
+                "effect": {
+                    "happiness": 10
+                },
+                "message": "The pup’s safe return made your day."
+            },
+            {
+                "text": "Keep it (chance vet bill)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.7,
+                            "money": -100,
+                            "message": "Turns out it needed care—vet bill paid."
+                        },
+                        {
+                            "chance": 0.3,
+                            "money": 0,
+                            "message": "Healthy pup—no extra costs!"
+                        }
+                    ]
+                },
+                "message": "You decided to adopt and waited."
+            }
+        ]
+    },
+    {
+        "text": "Your favorite streaming service raises prices.",
+        "choices": [
+            {
+                "text": "Keep subscription (−$3)",
+                "effect": {
+                    "money": -3
+                },
+                "message": "You kept watching your favorite shows."
+            },
+            {
+                "text": "Cancel (+happiness)",
+                "effect": {
+                    "happiness": 5
+                },
+                "message": "You canceled and feel relieved."
+            }
+        ]
+    },
+    {
+        "text": "You get called for jury duty.",
+        "choices": [
+            {
+                "text": "Attend (−job)",
+                "effect": {
+                    "job": -10
+                },
+                "message": "You served and missed work."
+            },
+            {
+                "text": "Request defer (chance approval)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.5,
+                            "job": 0,
+                            "message": "Your deferment was approved—no time lost."
+                        },
+                        {
+                            "chance": 0.5,
+                            "job": -10,
+                            "message": "Deferment denied—you must attend."
+                        }
+                    ]
+                },
+                "message": "You asked to postpone and waited for word."
+            }
+        ]
+    },
+    {
+        "text": "Your wearable fitness tracker battery dies.",
+        "choices": [
+            {
+                "text": "Replace battery (−$20, +health)",
+                "effect": {
+                    "money": -20,
+                    "health": 5
+                },
+                "message": "You replaced it and tracked your workouts again."
+            },
+            {
+                "text": "Stop tracking (−health)",
+                "effect": {
+                    "health": -5
+                },
+                "message": "Without data, you slacked off on exercise."
+            }
+        ]
+    },
+    {
+        "text": "You get an unexpected work performance review.",
+        "choices": [
+            {
+                "text": "Celebrate (−$30, +happiness)",
+                "effect": {
+                    "money": -30,
+                    "happiness": 10
+                },
+                "message": "You treated yourself—you deserved it!"
+            },
+            {
+                "text": "Take feedback (+job)",
+                "effect": {
+                    "job": 5
+                },
+                "message": "You improved your skills at work."
+            }
+        ]
+    },
+    {
+        "text": "You find a coupon for groceries.",
+        "choices": [
+            {
+                "text": "Use it (+$20)",
+                "effect": {
+                    "money": 20
+                },
+                "message": "You saved money on your next shop."
+            },
+            {
+                "text": "Forget it (no effect)",
+                "effect": {},
+                "message": "You misplaced the coupon—oh well."
+            }
+        ]
+    },
+    {
+        "text": "Your glasses prescription changes.",
+        "choices": [
+            {
+                "text": "Buy new glasses (−$200)",
+                "effect": {
+                    "money": -200
+                },
+                "message": "You see clearly again in your new specs."
+            },
+            {
+                "text": "Keep old pair (−health)",
+                "effect": {
+                    "health": -5
+                },
+                "message": "Your vision suffered without the update."
+            }
+        ]
+    },
+    {
+        "text": "You attend a free community workshop.",
+        "choices": [
+            {
+                "text": "Participate (+job, +happiness)",
+                "effect": {
+                    "job": 5,
+                    "happiness": 5
+                },
+                "message": "You learned new skills—and felt energized."
+            },
+            {
+                "text": "Skip it (+job)",
+                "effect": {
+                    "job": 2
+                },
+                "message": "You took on extra work instead."
+            }
+        ]
+    },
+    {
+        "text": "Your smartphone plan data runs out.",
+        "choices": [
+            {
+                "text": "Buy data add-on (−$10)",
+                "effect": {
+                    "money": -10
+                },
+                "message": "You got back online right away."
+            },
+            {
+                "text": "Wait for next cycle (−happiness)",
+                "effect": {
+                    "happiness": -5
+                },
+                "message": "You were offline until your plan reset."
+            }
+        ]
+    },
+    {
+        "text": "You get a refund check in the mail.",
+        "choices": [
+            {
+                "text": "Deposit it (+$150)",
+                "effect": {
+                    "money": 150
+                },
+                "message": "Your balance is healthier now."
+            },
+            {
+                "text": "Spend it (+happiness)",
+                "effect": {
+                    "happiness": 5
+                },
+                "message": "You treated yourself and smiled."
+            }
+        ]
+    },
+    {
+        "text": "Your credit card statement shows high interest.",
+        "choices": [
+            {
+                "text": "Pay full balance (−$500)",
+                "effect": {
+                    "money": -500
+                },
+                "message": "You cleared your debt and saved on interest."
+            },
+            {
+                "text": "Pay minimum (−$50, −job)",
+                "effect": {
+                    "money": -50,
+                    "job": -5
+                },
+                "message": "You kept the lights on but fell behind."
+            }
+        ]
+    },
+    {
+        "text": "You volunteer for a blood drive.",
+        "choices": [
+            {
+                "text": "Donate (+health, −happiness)",
+                "effect": {
+                    "health": 5,
+                    "happiness": -5
+                },
+                "message": "You gave blood—felt tired but altruistic."
+            },
+            {
+                "text": "Skip (no effect)",
+                "effect": {},
+                "message": "You opted out and carried on."
+            }
+        ]
+    },
+    {
+        "text": "You get invited to a tech conference (ticket fee).",
+        "choices": [
+            {
+                "text": "Attend (−$150, +job)",
+                "effect": {
+                    "money": -150,
+                    "job": 10
+                },
+                "message": "You networked and boosted your career."
+            },
+            {
+                "text": "Watch online (−$50, +job)",
+                "effect": {
+                    "money": -50,
+                    "job": 5
+                },
+                "message": "You learned from home—and saved time."
+            }
+        ]
+    },
+    {
+        "text": "Your rent control application is approved!",
+        "choices": [
+            {
+                "text": "Celebrate (−$50, +happiness)",
+                "effect": {
+                    "money": -50,
+                    "happiness": 15
+                },
+                "message": "You threw a mini party—so happy!"
+            },
+            {
+                "text": "Do nothing (+job)",
+                "effect": {
+                    "job": 5
+                },
+                "message": "You focused on work and felt productive."
+            }
+        ]
+    },
+    {
+        "text": "You accidentally leave the tap running.",
+        "choices": [
+            {
+                "text": "Fix leak (−$20)",
+                "effect": {
+                    "money": -20
+                },
+                "message": "You turned it off—no more wasted water."
+            },
+            {
+                "text": "Ignore it (chance higher bill)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.5,
+                            "money": -30,
+                            "message": "Your water bill spiked this month."
+                        },
+                        {
+                            "chance": 0.5,
+                            "money": 0,
+                            "message": "Luckily, the leak stopped itself."
+                        }
+                    ]
+                },
+                "message": "You walked away, hoping it wouldn’t matter."
+            }
+        ]
+    },
+    {
+        "text": "You find a rare collectible toy at a thrift store.",
+        "choices": [
+            {
+                "text": "Buy it (−$80, +happiness)",
+                "effect": {
+                    "money": -80,
+                    "happiness": 10
+                },
+                "message": "You scored a gem—your collection just grew."
+            },
+            {
+                "text": "Leave it (no effect)",
+                "effect": {},
+                "message": "You passed it by—but wonder if you’ll regret it."
+            }
+        ]
+    },
+    {
+        "text": "Your health insurance premium increases.",
+        "choices": [
+            {
+                "text": "Pay it (−$200)",
+                "effect": {
+                    "money": -200
+                },
+                "message": "Your coverage continues uninterrupted."
+            },
+            {
+                "text": "Shop around (chance save)",
+                "effect": {
+                    "random": [
+                        {
+                            "chance": 0.4,
+                            "money": -180,
+                            "message": "You found a cheaper plan—nice!"
+                        },
+                        {
+                            "chance": 0.6,
+                            "money": -200,
+                            "message": "No better deal—back to square one."
+                        }
+                    ]
+                },
+                "message": "You spent time comparing plans."
+            }
+        ]
+    }
+]

@@ -1,0 +1,471 @@
+<!-- Save as budgeting-simulator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Budgeting Simulator</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #181a20;
+      color: #e5e7eb;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 0 0 40px 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 32px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #a5b4fc;
+    }
+    #game-box {
+      background: #23263a;
+      border: 1.5px solid #32344a;
+      box-shadow: 0 2px 16px #0004;
+      padding: 24px 20px 20px 20px;
+      border-radius: 18px;
+      margin-top: 24px;
+      margin-bottom: 32px;
+      min-height: 260px;
+      transition: box-shadow 0.2s;
+    }
+    .stat-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 8px;
+      font-size: 1.1em;
+    }
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      background: #23263a;
+      border-radius: 8px;
+      padding: 4px 10px 4px 8px;
+      min-width: 60px;
+      font-size: 1.08em;
+      flex: 1 1 0;
+      justify-content: center;
+      box-sizing: border-box;
+      color: #e5e7eb;
+    }
+    .stat .ph-bold {
+      font-size: 1.3em;
+      vertical-align: middle;
+    }
+    .stat.money .ph-bold { color: #4ade80; }
+    .stat.happiness .ph-bold { color: #fde047; }
+    .stat.health .ph-bold { color: #fb7185; }
+    .stat.job .ph-bold { color: #a5b4fc; }
+    .choice-btn {
+      margin: 10px 0;
+      display: block;
+      width: 100%;
+      font-size: 1.08em;
+      padding: 12px 0;
+      border-radius: 10px;
+      border: none;
+      background: #6366f1;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 4px #0003;
+      transition: background 0.15s, box-shadow 0.15s, opacity 0.2s;
+    }
+    .choice-btn:disabled,
+    .choice-btn[disabled] {
+      background: #32344a;
+      color: #6b7280;
+      cursor: not-allowed;
+      opacity: 0.7;
+      box-shadow: none;
+    }
+    .choice-btn:not(:disabled):hover {
+      background: #4338ca;
+      box-shadow: 0 2px 8px #6366f133;
+    }
+    hr {
+      border: none;
+      border-top: 1.5px solid #32344a;
+      margin: 18px 0 16px 0;
+    }
+    .game-over {
+      text-align: center;
+      margin-top: 24px;
+    }
+    .game-over strong {
+      color: #a5b4fc;
+    }
+    /* Add to your existing styles */
+    .job-card {
+      background: #23263a;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 2px 12px #0002;
+      color: #e5e7eb;
+      transition: background 0.18s, box-shadow 0.18s, border 0.18s;
+      border: 2px solid transparent;
+    }
+    .job-card:hover {
+      background: #262a3a;
+      border: 2px solid #6366f1;
+      box-shadow: 0 4px 24px #6366f133;
+    }
+    .progress-bar-bg {
+      background: #32344a;
+      border-radius: 8px;
+      height: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      background: linear-gradient(90deg, #6366f1, #2dbe60);
+      height: 100%;
+      transition: width 0.4s;
+    }
+    .stat-bar .stat.changed {
+      animation: statflash 0.7s;
+    }
+    @keyframes statflash {
+      0% { background: #fde047; }
+      100% { background: #23263a; }
+    }
+    .event-feedback {
+      text-align: center;
+      font-size: 1.08em;
+      color: #a5b4fc;
+      margin-bottom: 10px;
+      min-height: 22px;
+      transition: opacity 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <i class="ph-bold ph-cube" style="color:#6366f1"></i>
+    Budgeting Simulator
+  </h2>
+  <div id="game-box"></div>
+  <script>
+  // Events JSON
+let eventsData = [];
+
+fetch('events.json')
+  .then(res => res.json())
+  .then(data => {
+    eventsData = data;
+    startGame(); // Only start the game after events are loaded
+  });
+
+// Game data
+  const housings = [
+    { name: "Shared Apartment", cost: 600, utilities: 50 },
+    { name: "Studio", cost: 1200, utilities: 100 },
+    { name: "House", cost: 2000, utilities: 200 }
+  ];
+
+  // Game state
+  let state = {
+    day: 1,
+    money: 0,
+    job: null,
+    housing: null,
+    health: 100,
+    happiness: 50,
+    jobPerf: 50
+  };
+
+  const gameBox = document.getElementById('game-box');
+
+  // --- UI Functions ---
+  // Add icons and descriptions for jobs
+  const allJobs = [
+    { name: "Barista", salary: 1800, icon: "ph-coffee", desc: "Serve coffee and pastries." },
+    { name: "Teacher", salary: 2500, icon: "ph-book", desc: "Educate students in school." },
+    { name: "Software Developer", salary: 4000, icon: "ph-code", desc: "Write and debug code." },
+    { name: "Retail Worker", salary: 2000, icon: "ph-shopping-bag", desc: "Assist customers in store." },
+    { name: "Nurse", salary: 3200, icon: "ph-stethoscope", desc: "Care for patients." },
+    { name: "Graphic Designer", salary: 2700, icon: "ph-paint-brush", desc: "Create visual content." },
+    { name: "Delivery Driver", salary: 2200, icon: "ph-truck", desc: "Deliver packages." },
+    { name: "Accountant", salary: 3500, icon: "ph-calculator", desc: "Manage finances." },
+    { name: "Chef", salary: 2600, icon: "ph-cooking-pot", desc: "Prepare delicious meals." },
+    { name: "Receptionist", salary: 2100, icon: "ph-phone", desc: "Greet and assist visitors." }
+  ];
+
+  // Utility: Shuffle and pick N items
+  function pickRandomJobs(n) {
+    const arr = [...allJobs];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr.slice(0, n);
+  }
+
+  let jobs = []; // Will hold the 3 random jobs for this game
+
+  function showStats() {
+    // Compare with previous stats for animation
+    function statClass(stat) {
+      return prevStats[stat] !== undefined && prevStats[stat] !== state[stat] ? "changed" : "";
+    }
+    return `
+      <div class="stat-bar">
+        <span class="stat money ${statClass('money')}"><i class="ph-bold ph-money"></i> $${state.money}</span>
+        <span class="stat happiness ${statClass('happiness')}"><i class="ph-bold ph-smiley"></i> ${state.happiness}</span>
+        <span class="stat health ${statClass('health')}"><i class="ph-bold ph-heart"></i> ${state.health}</span>
+        <span class="stat job ${statClass('jobPerf')}"><i class="ph-bold ph-briefcase"></i> ${state.jobPerf}</span>
+      </div>
+    `;
+  }
+
+  function showProgressBar() {
+    const percent = Math.min(100, Math.round((state.day - 1) / 30 * 100));
+    return `
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" style="width:${percent}%;"></div>
+      </div>
+    `;
+  }
+
+  function startGame() {
+    state = {
+      day: 1,
+      money: 0,
+      job: null,
+      housing: null,
+      health: 100,
+      happiness: 50,
+      jobPerf: 50
+    };
+    jobs = pickRandomJobs(3);
+    showJobSelection();
+  }
+
+  function showJobSelection() {
+    gameBox.innerHTML = `<h3>Choose your job</h3>`;
+    jobs.forEach((job) => {
+      const card = document.createElement('div');
+      card.className = 'job-card';
+      card.innerHTML = `
+        <i class="ph-bold ${job.icon}"></i>
+        <div>
+          <div style="font-weight:600;font-size:1.13em;">${job.name} <span style="color:#6366f1;">($${job.salary}/month)</span></div>
+          <div style="font-size:0.98em;color:#555;">${job.desc}</div>
+        </div>
+      `;
+      card.onclick = () => {
+        state.job = job;
+        state.money = job.salary;
+        showHousingSelection();
+      };
+      card.style.cursor = "pointer";
+      card.onmouseover = () => card.style.background = "#e0e7ff";
+      card.onmouseout = () => card.style.background = "";
+      gameBox.appendChild(card);
+    });
+  }
+
+  function showHousingSelection() {
+    gameBox.innerHTML = `<h3>Choose your housing</h3>`;
+    housings.forEach((house) => {
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn';
+      btn.textContent = `${house.name} (-$${house.cost}/month, -$${house.utilities}/utilities)`;
+      btn.onclick = () => {
+        state.housing = house;
+        state.money -= house.cost;
+        state.money -= house.utilities;
+        showDay();
+      };
+      gameBox.appendChild(btn);
+    });
+  }
+
+  // Track previous stats for animation
+  let prevStats = { money: 0, happiness: 0, health: 0, jobPerf: 0 };
+
+  function applyEffect(effect, choice) {
+    prevStats = { ...state }; // Save previous stats for animation
+    let feedback = [];
+    let randomFeedback = [];
+    let randomOccurred = false;
+    let randomMsg = null;
+
+    if (!effect) return { feedback: "", randomFeedback: "" };
+
+    // Normal effects
+    if (effect.money) state.money += effect.money;
+    if (effect.health) state.health += effect.health;
+    if (effect.happiness) state.happiness += effect.happiness;
+    if (effect.job) state.jobPerf += effect.job;
+
+    // Handle random effects with custom messages
+    if (effect.random) {
+      effect.random.forEach(r => {
+        if (Math.random() < r.chance) {
+          randomOccurred = true;
+          if (r.money) state.money += r.money;
+          if (r.health) state.health += r.health;
+          if (r.happiness) state.happiness += r.happiness;
+          if (r.job) state.jobPerf += r.job;
+          if (r.message) randomMsg = r.message;
+        }
+      });
+    }
+
+    // Clamp stats
+    state.health = Math.max(0, Math.min(100, state.health));
+    state.happiness = Math.max(0, Math.min(100, state.happiness));
+    state.jobPerf = Math.max(0, Math.min(100, state.jobPerf));
+
+    // Use custom message if present
+    let mainMsg = choice && choice.message ? choice.message : "";
+    return {
+      feedback: mainMsg,
+      randomFeedback: randomMsg
+    };
+  }
+
+  function showEventFeedback(msg, randomMsg) {
+    let fb = document.getElementById('event-feedback');
+    if (!fb) {
+      fb = document.createElement('div');
+      fb.id = 'event-feedback';
+      fb.className = 'event-feedback';
+      gameBox.insertBefore(fb, gameBox.children[2]);
+    }
+    if (randomMsg) {
+      fb.innerHTML = `<span>${msg}</span><br><span style="color:#e11d48">${randomMsg}</span>`;
+    } else {
+      fb.textContent = msg;
+    }
+    fb.style.opacity = 1;
+    setTimeout(() => { fb.style.opacity = 0; }, 1800);
+  }
+
+  function meetsRequirements(requires) {
+    if (!requires) return true;
+    if (requires.money !== undefined && state.money < requires.money) return false;
+    if (requires.health !== undefined && state.health < requires.health) return false;
+    if (requires.happiness !== undefined && state.happiness < requires.happiness) return false;
+    if (requires.job !== undefined && state.jobPerf < requires.job) return false;
+    return true;
+  }
+
+  function checkLose() {
+    if (state.money <= 0) {
+      showEnd("You ran out of money! Try again.");
+      return true;
+    }
+    if (state.health <= 0) {
+      showEnd("You lost all your health! Try again.");
+      return true;
+    }
+    if (state.happiness <= 0) {
+      showEnd("You lost all your happiness! Try again.");
+      return true;
+    }
+    return false;
+  }
+
+  function showDay() {
+    if (state.day > 30) {
+      showEnd();
+      return;
+    }
+
+    // Deduct rent/utilities every 10 days
+    if (state.day % 10 === 1 && state.day !== 1) {
+      state.money -= state.housing.cost;
+      state.money -= state.housing.utilities;
+    }
+
+    // Check for lose conditions
+    if (checkLose()) return;
+
+    // Random event
+    const event = eventsData[Math.floor(Math.random() * eventsData.length)];
+
+    gameBox.innerHTML = `
+      ${showProgressBar()}
+      <div style="font-weight:600;font-size:1.1em;margin-bottom:8px;">
+        Day ${state.day} / 30
+      </div>
+      ${showStats()}
+      <div id="event-feedback" class="event-feedback"></div>
+      <hr>
+      <p style="font-size:1.13em;margin-bottom:18px;">${event.text}</p>
+    `;
+
+    // Container for choices so we can replace it with feedback
+    const choicesDiv = document.createElement('div');
+    choicesDiv.id = 'choices-area';
+    event.choices.forEach(choice => {
+      const canChoose = meetsRequirements(choice.requires);
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn';
+      btn.textContent = choice.text;
+      btn.disabled = !canChoose;
+      if (!canChoose) btn.style.opacity = 0.5;
+      btn.onclick = () => {
+        if (!canChoose) return;
+        const { feedback, randomFeedback } = applyEffect(choice.effect, choice);
+        // Replace choices with feedback message and a Continue button
+        let msgHtml = `<div class=\"event-feedback\" style=\"opacity:1; min-height:32px; font-size:1.13em; margin-bottom:18px; text-align:center;\">`;
+        if (randomFeedback) {
+          msgHtml += `<span>${feedback ? feedback : "You made your choice."}</span><br><span style=\"color:#e11d48\">${randomFeedback}</span>`;
+        } else {
+          msgHtml += feedback ? feedback : "You made your choice.";
+        }
+        msgHtml += `</div>`;
+        msgHtml += `<button class=\"choice-btn\" id=\"continue-btn\" style=\"margin-top:10px;\">Continue</button>`;
+        choicesDiv.innerHTML = msgHtml;
+        // Add event listener for continue
+        document.getElementById('continue-btn').onclick = () => {
+          state.day++;
+          showDay();
+        };
+      };
+      choicesDiv.appendChild(btn);
+    });
+    gameBox.appendChild(choicesDiv);
+    // Remove stat highlight after animation
+    setTimeout(() => {
+      document.querySelectorAll('.stat.changed').forEach(el => el.classList.remove('changed'));
+    }, 800);
+  }
+
+  function showEnd(message) {
+    gameBox.innerHTML = `
+      <div class="game-over">
+        <h3><i class="ph-bold ph-flag-checkered" style="color:#6366f1"></i> Game Over!</h3>
+        <p style="font-size:1.15em;">${message ? message : `After 30 days, you have <strong>$${state.money}</strong> left.`}</p>
+        <div style="margin:18px 0 10px 0;">
+          <span class="stat money"><i class="ph-bold ph-money"></i> $${state.money}</span>
+          <span class="stat happiness"><i class="ph-bold ph-smiley"></i> ${state.happiness}</span>
+          <span class="stat health"><i class="ph-bold ph-heart"></i> ${state.health}</span>
+          <span class="stat job"><i class="ph-bold ph-briefcase"></i> ${state.jobPerf}</span>
+        </div>
+        <button class="choice-btn" onclick="startGame()">Play Again</button>
+      </div>
+    `;
+  }
+
+  // (Removed duplicate allJobs, pickRandomJobs, and jobs declaration)
+
+  // Start the game
+  </script>
+</body>
+</html>

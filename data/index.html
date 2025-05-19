@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data &amp; Statistics</title>
+
+    <link rel="stylesheet" href="../global-styles.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Phosphor Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="navbar-logo"> Homelessness Awareness </a>
+        <ul class="navbar-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/data/" class="active">Data</a></li>
+          <li><a href="/games/">Games</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+        <!-- hamburger toggle -->
+        <button
+          class="navbar-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container data-container">
+      <h1>Data &amp; Statistics</h1>
+      <!-- Chart -->
+      <section class="chart-wrapper">
+        <canvas id="myChart"></canvas>
+      </section>
+
+      <!-- Data Table -->
+      <section class="data-table">
+        <h3>Black/African American Homeless Population (2017–2024)</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Population</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2017</td>
+                <td>3,479</td>
+              </tr>
+              <tr>
+                <td>2018</td>
+                <td>3,467</td>
+              </tr>
+              <tr>
+                <td>2019</td>
+                <td>4,066</td>
+              </tr>
+              <tr>
+                <td>2020</td>
+                <td>4,535</td>
+              </tr>
+              <tr>
+                <td>2021</td>
+                <td>5,097</td>
+              </tr>
+              <tr>
+                <td>2022</td>
+                <td>5,896</td>
+              </tr>
+              <tr>
+                <td>2023</td>
+                <td>6,661</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>6,450</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Data Description -->
+      <section class="data-description">
+        <h3>About This Data</h3>
+        <p>
+          I looked at 7 years of homelessness data by race in Alameda County to
+          see how homelessness rates are changing year by year. I used that
+          data to make a prediction about what the homelessness rates will be
+          in 2035.
+        </p>
+        <p>
+          A linear model best fits my data because it has an R<sup>2</sup> value
+          of 0.956, which is the closest to 1. The linear model is
+          <em>y = 510x + 3172</em>, which means that for each year since 2017,
+          the amount of Black homeless people in Alameda County has risen by an
+          average of 510 people. The starting point is 3172, which means that
+          in 2017, there were 3172 Black homeless people in Alameda County.
+        </p>
+        <p>
+          According to my data, in 2035, there will be 12,352 Black homeless
+          people. I found this by plugging in 18 for x, because the x value is
+          years after 2017 and 18 years after 2017 is 2035. I don’t think this
+          will be accurate because it’s impossible for it to keep going up
+          forever, and in recent years, it has been going down.
+        </p>
+        <p>
+          Source:
+          <a
+            href="https://data.ca.gov/dataset/homelessness-demographics"
+            target="_blank"
+            rel="noopener noreferrer"
+            >https://data.ca.gov/dataset/homelessness-demographics</a
+          >
+        </p>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>
+        &copy; 2025 Homelessness Awareness
+      </p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+      // Navbar toggle (unchanged) …
+      const toggleBtn = document.querySelector(".navbar-toggle");
+      const menu = document.querySelector(".navbar-menu");
+      toggleBtn.addEventListener("click", () => {
+        const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", String(!expanded));
+        menu.classList.toggle("active");
+      });
+
+      // Chart.js setup
+      const ctx = document.getElementById("myChart");
+      Chart.defaults.color = "#fff";
+
+      // Years and raw population data
+      const years = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
+      const rawData = [3479, 3467, 4066, 4535, 5097, 5896, 6661, 6450];
+
+      // Build scatter points: { x: year, y: population }
+      const scatterPoints = years.map((yr, i) => ({ x: yr, y: rawData[i] }));
+
+      // Build trendline using y = 510x + 3172,
+      // but map x to the same year values for alignment
+      const trendPoints = years.map((yr) => {
+        // compute x-index relative to 2017
+        const x = yr - 2017;
+        return { x: yr, y: 510 * x + 3172 };
+      });
+
+      new Chart(ctx, {
+        type: "scatter",
+        data: {
+          datasets: [
+            {
+              label: "Black Homeless Population",
+              data: scatterPoints,
+              backgroundColor: "rgba(255,99,132,0.6)",
+              pointRadius: 6,
+            },
+            {
+              label: "Trendline (y = 510x + 3172)",
+              data: trendPoints,
+              type: "line",
+              borderColor: "rgb(54,162,235)",
+              borderWidth: 2,
+              fill: false,
+              pointRadius: 0,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            legend: { labels: { color: "#fff" } },
+          },
+          scales: {
+            x: {
+              type: "linear",
+              position: "bottom",
+              title: {
+                display: true,
+                text: "Year",
+                color: "#fff",
+              },
+              ticks: {
+                color: "#fff",
+                callback: (val) => (Number.isInteger(val) ? val : ""),
+              },
+              grid: { color: "rgba(255,255,255,0.2)" },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Population",
+                color: "#fff",
+              },
+              ticks: { color: "#fff" },
+              grid: { color: "rgba(255,255,255,0.2)" },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

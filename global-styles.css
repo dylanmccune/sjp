@@ -1,0 +1,161 @@
+/* RESET & VARIABLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    background: var(--bg-color);
+    color: var(--text);
+}
+
+:root {
+    --text: #f5f5f5;
+    --button-primary: #1E90FF;
+    --bg-color: #121212;
+    --backdrop-blur: blur(12px);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --text-hover: #ffffff;
+    --accent-color: #1E90FF;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--bg-color);
+    backdrop-filter: var(--backdrop-blur);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar-menu a {
+    position: relative;
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 0;
+}
+
+.navbar-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s;
+}
+
+.navbar-menu a:hover::after {
+    width: 100%;
+}
+
+/* HAMBURGER (hidden by default) */
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* show hamburger & hide menu on small screens */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--bg-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 8px var(--shadow-color);
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+}
+
+/* CONTAINERS */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+/* FOOTER */
+.site-footer {
+    background: var(--bg-color);
+    color: var(--text);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+}
+
+.site-footer a {
+    color: var(--accent-color);
+    margin: 0 0.5rem;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    opacity: 0.8;
+}
+
+/* make sure the SVG wrapper shows up */
+button .svg-wrapper-1,
+button .svg-wrapper {
+    display: inline-flex;
+    /* allow the wrapper to size to its contents */
+    align-items: center;
+    justify-content: center;
+}
+
+/* (you already have these—but just in case they were missing!) */
+button .svg-wrapper-1 {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease-in-out;
+}
+
+button .svg-wrapper {
+    transition: transform 0.3s ease-in-out;
+}

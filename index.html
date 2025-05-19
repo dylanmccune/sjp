@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redlining & Homelessness Awareness</title>
+    <link rel="stylesheet" href="global-styles.css" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Phosphor Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="navbar-logo">Homelessness Awareness</a>
+        <ul class="navbar-menu">
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/data/">Data</a></li>
+          <li><a href="/games/">Games</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+
+        <!-- hamburger toggle -->
+        <button
+          class="navbar-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Stop Systemic Homelessness</h1>
+        <h2>Understanding redlining’s lasting impact.</h2>
+        <button
+          onclick="document
+            .getElementById('main')
+            .scrollIntoView({ behavior: 'smooth' })"
+        >
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#fff"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm37.66-85.66a8,8,0,0,1,0,11.32l-32,32a8,8,0,0,1-11.32,0l-32-32a8,8,0,0,1,11.32-11.32L120,148.69V88a8,8,0,0,1,16,0v60.69l18.34-18.35A8,8,0,0,1,165.66,130.34Z"
+                />
+              </svg>
+            </div>
+          </div>
+          <span>Read More</span>
+        </button>
+      </div>
+      <div class="hero-attribution">
+        Photo by
+        <a href="https://unsplash.com/@captured_deguia" target="_blank"
+          >kylie De Guia</a
+        >
+        on
+        <a
+          href="https://unsplash.com/photos/woman-walking-in-street-3SBTC_Ux6-0"
+          target="_blank"
+          >Unsplash</a
+        >
+      </div>
+    </section>
+
+    <main id="main">
+      <section class="faq container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What is redlining?
+            <i class="ph-fill ph-caret-down"></i>
+          </button>
+          <div class="faq-answer" hidden>
+            Redlining is the process of denying certain groups the right to live
+            in an area.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does redlining happen?
+            <i class="ph-fill ph-caret-down"></i>
+          </button>
+          <div class="faq-answer" hidden>
+            Banks may refuse loans to areas deemed “financially unsound,” often
+            discriminating against minority communities.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        &copy; 2025 Homelessness Awareness
+      </p>
+    </footer>
+
+    <script>
+      // Navbar toggle
+      const toggleBtn = document.querySelector(".navbar-toggle");
+      const menu = document.querySelector(".navbar-menu");
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", String(!isOpen));
+        menu.classList.toggle("active");
+      });
+
+      // FAQ accordion
+      document.querySelectorAll(".faq-question").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const expanded = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", String(!expanded));
+          btn.nextElementSibling.hidden = expanded;
+        });
+      });
+    </script>
+  </body>
+</html>

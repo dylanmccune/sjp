@@ -1,0 +1,193 @@
+/* ─── HERO SECTION ────────────────────────────────────────────── */
+.hero {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.hero-inner {
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.hero-inner a {
+  text-decoration: none;
+}
+
+/* ─── BUTTON (Homepage Call-To-Action) ───────────────────────── */
+button {
+  font-family: inherit;
+  font-size: 20px;
+  background: var(--button-primary);
+  color: white;
+  padding: 0.7em 1em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  font-weight: 1000;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+button span {
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+  fill: var(--text);
+}
+
+button .svg-wrapper-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+  transform: scale(1.25);
+}
+
+button:hover svg {
+  transform: translateX(2.2em) scale(1.2);
+}
+
+button:hover span {
+  opacity: 0;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ─── HERO ATTRIBUTION ─────────────────────────────────────────── */
+.hero-attribution {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+.hero-attribution a {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.hero-attribution a:hover {
+  opacity: 0.8;
+}
+
+/* ─── FAQ ─────────────────────────────────────────────────────── */
+.faq h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  background: #1b1b1b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-answer {
+  padding: 1rem;
+  border-top: 1px solid #333;
+  background-color: #181818;
+}
+
+
+.faq h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.faq-item {
+  background: #1b1b1b;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+  font-size: 1.25rem;
+}
+
+.faq-question[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 1rem;
+  border-top: 1px solid #333;
+  background-color: #181818;
+}
