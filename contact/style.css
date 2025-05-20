@@ -38,6 +38,7 @@
     background-color: #1a1a1a;
     color: var(--text);
     font-size: 1rem;
+    font-family: inherit;
     transition: border 0.2s ease, background 0.2s ease;
 }
 
@@ -52,14 +53,18 @@
     padding: 1rem;
     border: none;
     border-radius: 6px;
-    background-color: var(--accent);
-    color: white;
+    background: var(--accent-color);
+    color: var(--text-hover);
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.2s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    letter-spacing: 0.03em;
 }
 
 .contact-form button:hover {
-    background-color: #e04040;
+    background: #176edc;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px var(--shadow-color);
 }
