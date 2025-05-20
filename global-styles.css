@@ -1,3 +1,85 @@
+/* Ensure navbar links and dropdown triggers are aligned */
+.navbar-menu > li > a,
+.navbar-menu li.dropdown > span {
+  display: inline-block;
+  padding: 0.5em 0;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+/* Navbar Dropdown Styles */
+.navbar-menu li.dropdown {
+  position: relative;
+  margin: 0;
+}
+
+.navbar-menu li.dropdown > span {
+  cursor: pointer;
+  padding: 0.5em 0;
+  display: inline-block;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar-menu li.dropdown > span:hover {
+  color: var(--accent-color);
+}
+
+.navbar-menu .dropdown-menu {
+      display: block;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scaleY(0.98);
+  transition: opacity 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1);
+  position: absolute;
+  left: 0;
+  top: 2.2em;
+  background: var(--bg-color);
+  min-width: 180px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  z-index: 1000;
+  margin: 0;
+  padding: 0.5em 0;
+  list-style: none;
+  border-radius: 0.25em;
+  border: 1px solid #222;
+}
+
+.navbar-menu li.dropdown:hover > .dropdown-menu,
+.navbar-menu li.dropdown:focus-within > .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scaleY(1);
+}
+
+.navbar-menu .dropdown-menu li {
+  width: 100%;
+}
+
+.navbar-menu .dropdown-menu a {
+  display: block;
+  padding: 0.5em 1.25em;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  background: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar-menu .dropdown-menu a:hover,
+.navbar-menu .dropdown-menu a.active {
+  background: #222;
+  color: var(--accent-color);
+}
+
+/* Adjust gap between navbar items */
+.navbar-menu {
+  gap: 1.25rem;
+}
 /* RESET & VARIABLES */
 * {
     margin: 0;
