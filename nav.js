@@ -86,3 +86,59 @@ function buildNav() {
 }
 
 document.addEventListener("DOMContentLoaded", buildNav);
+
+// BE BACK SOON POPUP
+// Add a popup to the DOM
+function addBeBackSoonPopup() {
+  if (document.getElementById("be-back-soon-popup")) return;
+  const popup = document.createElement("div");
+  popup.id = "be-back-soon-popup";
+  popup.className = "be-back-soon-popup";
+  popup.innerHTML = `
+    <div class="be-back-soon-title">
+      <i class="ph ph-clock"></i>
+      <span>Be back soon!</span>
+    </div>
+    <div class="be-back-soon-desc">
+      Feel free to look at this website or my poster
+    </div>
+  `;
+  document.body.appendChild(popup);
+}
+
+// Show/hide popup on key press
+
+function setupBeBackSoonHotkey() {
+  addBeBackSoonPopup();
+  // Read state from localStorage
+  let visible = localStorage.getItem("beBackSoonVisible") === "true";
+  const popup = document.getElementById("be-back-soon-popup");
+  if (popup) popup.classList.toggle("active", visible);
+
+  document.addEventListener("keydown", (e) => {
+    // Only trigger if not typing in an input/textarea
+    if (
+      e.target.tagName === "INPUT" ||
+      e.target.tagName === "TEXTAREA" ||
+      e.target.isContentEditable
+    ) {
+      return;
+    }
+    // You can change the key here (currently: 'b')
+    if (e.key.toLowerCase() === "b") {
+      visible = !visible;
+      localStorage.setItem("beBackSoonVisible", visible);
+      const popup = document.getElementById("be-back-soon-popup");
+      if (popup) {
+        popup.classList.toggle("active", visible);
+      }
+    }
+  });
+}
+
+// Run on page load
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupBeBackSoonHotkey);
+} else {
+  setupBeBackSoonHotkey();
+}
