@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Involved - Homelessness Awareness</title>
+    <link rel="stylesheet" href="../global-styles.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <script>
+      window.navBase = "../";
+    </script>
+    <script src="../nav.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-logo">Homelessness Awareness</a>
+        <ul class="navbar-menu">
+          <!-- populated by nav.js -->
+        </ul>
+        <button
+          class="navbar-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <h1>Get Involved</h1>
+        <h2>Join us in making a difference. Volunteer, donate, or advocate for our cause.</h2>
+      </div>
+    </header>
+
+    <main>
+      <section id="donate" class="content-section">
+        <h2>Donate</h2>
+        <p>We encourage you to support organizations actively working to combat homelessness. Here are some trusted organizations you can donate to:</p>
+        <div class="org-cards">
+          <div class="org-card">
+            <img src="../images/unitedway.png" alt="United Way logo or related image" class="org-img" />
+            <div class="org-info">
+              <h3>United Way</h3>
+              <p>United Way supports local solutions to improve education, financial stability, and health, including programs to prevent and address homelessness.</p>
+              <a href="https://www.unitedway.org/" target="_blank" class="org-link org-btn">Visit Website</a>
+            </div>
+          </div>
+          <div class="org-card">
+            <img src="../images/samhsa.jpg" alt="SAMHSA logo or related image" class="org-img" />
+            <div class="org-info">
+              <h3>SAMHSA Homelessness Programs</h3>
+              <p>The Substance Abuse and Mental Health Services Administration (SAMHSA) funds and supports programs to help people experiencing homelessness and mental health challenges.</p>
+              <a href="https://www.samhsa.gov/homelessness-programs-resources" target="_blank" class="org-link org-btn">Visit Website</a>
+            </div>
+          </div>
+          <div class="org-card">
+            <img src="../images/nationalhomeless.png" alt="National Coalition for the Homeless logo or related image" class="org-img" />
+            <div class="org-info">
+              <h3>National Coalition for the Homeless</h3>
+              <p>The National Coalition for the Homeless works to prevent and end homelessness by advocating for policy change and providing education and outreach.</p>
+              <a href="https://www.nationalhomeless.org/" target="_blank" class="org-link org-btn">Visit Website</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="advocate" class="content-section">
+        <h2>Advocate</h2>
+        <p>Advocacy is a powerful tool for change. Educate yourself and others about the systemic causes of homelessness, such as redlining, and participate in local events or campaigns to raise awareness.</p>
+        <button class="cta-button" onclick="window.location.href='../data/'">Explore Data & Statistics</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="links"></div>
+      <p>&copy; 2025 Homelessness Awareness</p>
+    </footer>
+
+    <script>
+      const toggleBtn = document.querySelector(".navbar-toggle");
+      const menu = document.querySelector(".navbar-menu");
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", String(!isOpen));
+        menu.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

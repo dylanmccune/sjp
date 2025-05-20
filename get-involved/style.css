@@ -1,0 +1,159 @@
+/* Enhanced Hero Section */
+.hero {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-inner {
+  max-width: 700px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Updated Content Sections */
+.content-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.content-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Style for call-to-action buttons */
+.cta-button {
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--button-primary, #1E90FF);
+  color: white;
+  padding: 0.8em 1.5em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+  background: var(--button-hover, #0056b3);
+  transform: translateY(-2px);
+}
+
+.cta-button:active {
+  transform: translateY(1px);
+}
+
+/* Organization Cards Layout */
+.org-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2.5rem 0 1.5rem 0;
+}
+
+.org-card {
+  background: #181c24;
+  color: var(--text, #f5f5f5);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0007, 0 1.5px 0 #2228 inset;
+  max-width: 320px;
+  min-width: 260px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 1.2rem 1rem;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+.org-card:hover {
+  box-shadow: 0 8px 32px #000a, 0 2px 0 #2228 inset;
+  transform: translateY(-4px) scale(1.03);
+}
+
+.org-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 8px #0002;
+}
+
+.org-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.org-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color, #1E90FF);
+}
+
+.org-info p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text, #f5f5f5);
+}
+
+
+/* Organization Card Button */
+.org-btn {
+  display: inline-block;
+  background: var(--button-primary, #1E90FF);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6em 1.3em;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30, 144, 255, 0.08);
+  transition: background 0.2s, transform 0.18s, box-shadow 0.18s;
+}
+.org-btn:hover, .org-btn:focus {
+  background: var(--button-hover, #0056b3);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.15);
+  text-decoration: none;
+}

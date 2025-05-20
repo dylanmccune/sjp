@@ -1,11 +1,12 @@
 // nav.js
 
 const NAV_ITEMS = [
-  { text: "Home", url: "index.html" },
-  { text: "Data", url: "data/index.html" },
-  { text: "Games", url: "games/index.html" },
-  { text: "Timeline", url: "timeline/index.html" },
-  { text: "Contact", url: "contact/index.html" },
+  { text: "Home", url: "" },
+  { text: "Data", url: "data/" },
+  { text: "Games", url: "games/" },
+  { text: "Timeline", url: "timeline/" },
+  { text: "Get Involved", url: "get-involved/" },
+  { text: "Contact", url: "contact/" },
 ];
 
 function buildNav() {
