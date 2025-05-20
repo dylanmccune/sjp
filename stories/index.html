@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stories - Homelessness Awareness</title>
+    <link rel="stylesheet" href="../global-styles.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <script>
+      window.navBase = "../";
+    </script>
+    <script src="../nav.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-logo">Homelessness Awareness</a>
+        <ul class="navbar-menu">
+          <!-- populated by nav.js -->
+        </ul>
+        <button
+          class="navbar-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </nav>
+    <header class="hero">
+      <div class="hero-inner">
+        <h1>Stories</h1>
+        <h2>Real experiences and perspectives on homelessness and housing justice.</h2>
+      </div>
+    </header>
+    <main>
+      <section class="stories-section">
+        <div class="story-card">
+          <h3>“As a kid, I wanted to be a paleontologist. Then love unearthed me from the streets.”</h3>
+          <p class="story-meta">Shared by Mohamed</p>
+          <p class="story-text">When I was a child, I loved digging holes and being outside in the dirt. This interest came from a group of paleontologists that visited my school. Life took a turn, and I found myself on the streets. But love and support unearthed me from that place, giving me hope for the future.</p>
+          <a class="story-link" href="https://storiesbehindthefog.com/as-a-kid-i-wanted-to-be-a-paleontologist-then-love-unearthed-me-from-the-streets-mohamed-f3e6a401a72f" target="_blank">Read Mohamed's full story</a>
+        </div>
+        <div class="story-card">
+          <h3>“San Francisco is a mess. I pick up 200 dirty heroin needles a day.”</h3>
+          <p class="story-meta">Shared by Gedion</p>
+          <p class="story-text">I’m not the type of person who particularly desires attention. I am not here to claim the face of homelessness, but I do what I can to keep my city clean, picking up hundreds of needles every day. It’s a small way to help my community.</p>
+          <a class="story-link" href="https://storiesbehindthefog.com/san-francisco-is-a-mess-i-pick-up-200-dirty-heroin-needles-a-day-gedion-79c82543bd3f" target="_blank">Read Gedion's full story</a>
+        </div>
+        <div class="story-card">
+          <h3>“I once was able to.”</h3>
+          <p class="story-meta">Shared by Anita</p>
+          <p class="story-text">Ohio is where I come from. And where alcoholism came, too. I’ve been out here in San Francisco for over 20 years now. This city has been both a challenge and a home, and I keep going, one day at a time.</p>
+          <a class="story-link" href="https://storiesbehindthefog.com/i-once-was-able-to-anita-592f5c36457f" target="_blank">Read Anita's full story</a>
+        </div>
+        <div class="story-card">
+          <h3>“I fought self-destruction with creation.”</h3>
+          <p class="story-meta">Shared by Ronnie Goodman</p>
+          <p class="story-text">I grew up in San Francisco, in the Fillmore area. I’ve been in and out of prison most of my life. Last time, it was eight and a half years. Art and running helped me fight self-destruction and find a new path.</p>
+          <a class="story-link" href="https://storiesbehindthefog.com/i-fought-self-destruction-with-creation-ronnie-goodman-2914a25c6d5c" target="_blank">Read Ronnie's full story</a>
+        </div>
+        <div class="story-card">
+          <h3>“I never had a home of my own. Ironic for a Native American.”</h3>
+          <p class="story-meta">Shared by Irene</p>
+          <p class="story-text">“Shhh! You know we have been robbed of our heritage and now we have to play the role of being Latinos.” I’ve never had a home of my own, which is ironic for a Native American. My journey is about reclaiming identity and belonging.</p>
+          <a class="story-link" href="https://storiesbehindthefog.com/i-never-had-a-home-of-my-own-ironic-for-a-native-american-irene-1fe66264257a" target="_blank">Read Irene's full story</a>
+        </div>
+        <p class="stories-note">Want to share your story or perspective? <a href="../contact/">Contact us</a> and we may feature it here.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="links"></div>
+      <p>&copy; 2025 Homelessness Awareness</p>
+    </footer>
+    <script>
+      const toggleBtn = document.querySelector(".navbar-toggle");
+      const menu = document.querySelector(".navbar-menu");
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", String(!isOpen));
+        menu.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { text: "Games", url: "games/" },
   { text: "Timeline", url: "timeline/" },
   { text: "Get Involved", url: "get-involved/" },
+  { text: "Stories", url: "stories/" },
   { text: "Contact", url: "contact/" },
 ];
 
