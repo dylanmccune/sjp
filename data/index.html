@@ -25,20 +25,19 @@
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      window.navBase = "../";
+    </script>
+    <script src="../nav.js"></script>
   </head>
 
   <body>
-    <!-- NAVIGATION -->
     <nav class="navbar">
       <div class="navbar-container">
-        <a href="/" class="navbar-logo"> Homelessness Awareness </a>
+        <a href="#" class="navbar-logo">Homelessness Awareness</a>
         <ul class="navbar-menu">
-          <li><a href="../">Home</a></li>
-          <li><a href="../data/" class="active">Data</a></li>
-          <li><a href="../games/">Games</a></li>
-          <li><a href="../contact/">Contact</a></li>
+          <!-- populated by nav.js -->
         </ul>
-        <!-- hamburger toggle -->
         <button
           class="navbar-toggle"
           aria-label="Toggle menu"
@@ -111,17 +110,17 @@
         <h3>About This Data</h3>
         <p>
           I looked at 7 years of homelessness data by race in Alameda County to
-          see how homelessness rates are changing year by year. I used that
-          data to make a prediction about what the homelessness rates will be
-          in 2035.
+          see how homelessness rates are changing year by year. I used that data
+          to make a prediction about what the homelessness rates will be in
+          2035.
         </p>
         <p>
           A linear model best fits my data because it has an R<sup>2</sup> value
           of 0.956, which is the closest to 1. The linear model is
           <em>y = 510x + 3172</em>, which means that for each year since 2017,
           the amount of Black homeless people in Alameda County has risen by an
-          average of 510 people. The starting point is 3172, which means that
-          in 2017, there were 3172 Black homeless people in Alameda County.
+          average of 510 people. The starting point is 3172, which means that in
+          2017, there were 3172 Black homeless people in Alameda County.
         </p>
         <p>
           According to my data, in 2035, there will be 12,352 Black homeless
@@ -142,11 +141,9 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
-      <p>
-        &copy; 2025 Homelessness Awareness
-      </p>
+      <div class="links"></div>
+      <p>&copy; 2025 Homelessness Awareness</p>
     </footer>
 
     <!-- SCRIPTS -->

@@ -1,84 +1,111 @@
 <!-- /games/index.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Games - Homelessness Awareness</title>
-    <link rel="stylesheet" href="../global-styles.css"> <!-- Link to global styles -->
-    <link rel="stylesheet" href="style.css"> <!-- Games page specific styles -->
+    <link rel="stylesheet" href="../global-styles.css" />
+    <!-- Link to global styles -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Games page specific styles -->
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
     <!-- Phosphor Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <script>
+      window.navBase = "../";
+    </script>
+    <script src="../nav.js"></script>
+  </head>
+
+  <body>
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="/" class="navbar-logo">Homelessness Awareness</a>
-            <ul class="navbar-menu">
-                <li><a href="../">Home</a></li>
-                <li><a href="../data/">Data</a></li>
-                <li><a href="../games/" class="active">Games</a></li>
-                <li><a href="../contact/">Contact</a></li>
-            </ul>
-            <button class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <i class="ph ph-list"></i>
-            </button>
-        </div>
+      <div class="navbar-container">
+        <a href="#" class="navbar-logo">Homelessness Awareness</a>
+        <ul class="navbar-menu">
+          <!-- populated by nav.js -->
+        </ul>
+        <button
+          class="navbar-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
     </nav>
 
     <main class="container games-page-container">
-        <h1>Games</h1>
-        
+      <h1>Games</h1>
 
-        <div class="games-grid">
-            <div class="game-card">
-                <div class="game-card-header">
-                    <span class="game-icon"><i class="ph ph-chess"></i></span>
-                    <h2>Play Chess</h2>
-                </div>
-                <p class="game-desc">A classic game of strategy. Play against the AI chess bot (skill level: easy). Fun facts about homelessness may appear during the game!</p>
-                <div class="iframe-container">
-                    <iframe 
-                        id="chess-game-iframe"
-                        src="chess/index.html" 
-                        title="Chess Game"
-                        frameborder="0"
-                        scrolling="no"
-                        width="420"
-                        height="600"
-                        style="background:transparent; border-radius:18px; box-shadow:0 2px 16px #0008;">
-                    </iframe>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-card-header">
-                    <span class="game-icon"><i class="ph ph-wallet"></i></span>
-                    <h2>Budgeting Simulator <span class="badge">New!</span></h2>
-                </div>
-                <p class="game-desc">Try to manage a limited monthly budget while facing real-life challenges. Make choices about housing, food, transportation, and unexpected expenses. Can you make it through the month?</p>
-                <div class="iframe-container">
-                    <iframe 
-                        id="budgeting-simulator-iframe"
-                        src="budgeting/index.html" 
-                        title="Budgeting Simulator"
-                        frameborder="0"
-                        scrolling="no"
-                        width="420"
-                        height="600"
-                        style="background:transparent; border-radius:18px; box-shadow:0 2px 16px #0008;">
-                    </iframe>
-                </div>
-            </div>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-card-header">
+            <span class="game-icon"><i class="ph ph-chess"></i></span>
+            <h2>Play Chess</h2>
+          </div>
+          <p class="game-desc">
+            A classic game of strategy. Play against the AI chess bot (skill
+            level: easy). Fun facts about homelessness may appear during the
+            game!
+          </p>
+          <div class="iframe-container">
+            <iframe
+              id="chess-game-iframe"
+              src="chess/index.html"
+              title="Chess Game"
+              frameborder="0"
+              scrolling="no"
+              width="420"
+              height="600"
+              style="background:transparent; border-radius:18px; box-shadow:0 2px 16px #0008;"
+            >
+            </iframe>
+          </div>
         </div>
+        <div class="game-card">
+          <div class="game-card-header">
+            <span class="game-icon"><i class="ph ph-wallet"></i></span>
+            <h2>Budgeting Simulator <span class="badge">New!</span></h2>
+          </div>
+          <p class="game-desc">
+            Try to manage a limited monthly budget while facing real-life
+            challenges. Make choices about housing, food, transportation, and
+            unexpected expenses. Can you make it through the month?
+          </p>
+          <div class="iframe-container">
+            <iframe
+              id="budgeting-simulator-iframe"
+              src="budgeting/index.html"
+              title="Budgeting Simulator"
+              frameborder="0"
+              scrolling="no"
+              width="420"
+              height="600"
+              style="background:transparent; border-radius:18px; box-shadow:0 2px 16px #0008;"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
 
-        <p class="coming-soon">More games coming soon!</p>
+      <p class="coming-soon">More games coming soon!</p>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 Homelessness Awareness</p>
+      <div class="links"></div>
+      <p>&copy; 2025 Homelessness Awareness</p>
     </footer>
 
     <script>
@@ -91,5 +118,5 @@
         menu.classList.toggle("active");
       });
     </script>
-</body>
+  </body>
 </html>

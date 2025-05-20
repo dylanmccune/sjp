@@ -20,19 +20,19 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
+    <script>
+      window.navBase = "";
+    </script>
+    <script src="nav.js"></script>
   </head>
+
   <body>
     <nav class="navbar">
       <div class="navbar-container">
-        <a href="/" class="navbar-logo">Homelessness Awareness</a>
+        <a href="#" class="navbar-logo">Homelessness Awareness</a>
         <ul class="navbar-menu">
-          <li><a href="" class="active">Home</a></li>
-          <li><a href="data/">Data</a></li>
-          <li><a href="games/">Games</a></li>
-          <li><a href="contact/">Contact</a></li>
+          <!-- populated by nav.js -->
         </ul>
-
-        <!-- hamburger toggle -->
         <button
           class="navbar-toggle"
           aria-label="Toggle menu"
@@ -113,27 +113,25 @@
     </main>
 
     <footer class="site-footer">
-      <p>
-        &copy; 2025 Homelessness Awareness
-      </p>
+      <div class="links"></div>
+      <p>&copy; 2025 Homelessness Awareness</p>
     </footer>
-
     <script>
       // Navbar toggle
       const toggleBtn = document.querySelector(".navbar-toggle");
       const menu = document.querySelector(".navbar-menu");
       toggleBtn.addEventListener("click", () => {
-        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
-        toggleBtn.setAttribute("aria-expanded", String(!isOpen));
+        const open = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", String(!open));
         menu.classList.toggle("active");
       });
 
       // FAQ accordion
       document.querySelectorAll(".faq-question").forEach((btn) => {
         btn.addEventListener("click", () => {
-          const expanded = btn.getAttribute("aria-expanded") === "true";
-          btn.setAttribute("aria-expanded", String(!expanded));
-          btn.nextElementSibling.hidden = expanded;
+          const exp = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", String(!exp));
+          btn.nextElementSibling.hidden = exp;
         });
       });
     </script>

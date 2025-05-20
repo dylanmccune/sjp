@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Redlining & Homelessness Timeline</title>
+    <link rel="stylesheet" href="../global-styles.css" />
+    <link rel="stylesheet" href="timeline.css" />
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <script>
+      window.navBase = "../";
+    </script>
+    <script src="../nav.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-logo">Homelessness Awareness</a>
+        <ul class="navbar-menu">
+          <!-- populated by nav.js -->
+        </ul>
+        <button
+          class="navbar-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </nav>
+
+    <main class="container timeline-page">
+      <h1>Redlining & Homelessness — A Timeline</h1>
+      <div id="timeline"></div>
+    </main>
+
+    <!-- copy your footer here -->
+    <footer class="site-footer">
+      <div class="links"></div>
+      <p>&copy; 2025 Homelessness Awareness</p>
+    </footer>
+
+    <script src="timeline.js"></script>
+  </body>
+</html>
